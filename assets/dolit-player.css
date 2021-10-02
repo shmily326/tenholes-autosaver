@@ -1,0 +1,543 @@
+body{
+    background-color: #fff;
+}
+.video-box{
+    width: 100%;
+    position: relative;
+    height: 211px;
+    overflow:hidden;
+}
+.landscape .video-box{
+    height: 100vh !important;
+}
+.video-box > div{
+    width: 100%;
+    height: 100%;
+}
+.video-box video{
+    width: 100%;
+    height: 100%;
+}
+/*字幕*/
+.webvtt{
+    color: red;
+    background-color: rgba(255,255,255,.9);
+}
+/*铺满*/
+.video-box video.cover{
+    width: 100% !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    object-fit: cover !important;
+}
+/*弹层*/
+.video-box .video-info {
+    position: absolute;
+    width: 0;
+    height: 0;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100;
+    visibility: visible;
+    opacity: 0;
+    transition: all .3s ease;
+    overflow: hidden;
+    line-height: 1.5;
+    text-align: left;
+    font-family:"Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif; 
+}
+
+/*水印*/
+#watermark{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 99;
+    padding: 4px 8px;
+    color: rgba(255,255,255,.8);
+    width: auto;
+    height: auto;
+    display: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+/*样式美化***************************************************/
+/*下一集*/
+.vjs-next-control,.vjs-next-control .vjs-icon-placeholder:before,.vjs-next-control .vjs-icon-placeholder {
+  font-family: VideoJS;
+  font-weight: normal;
+  font-style: normal;
+  cursor: pointer;
+}
+.vjs-next-control .vjs-icon-placeholder:before {
+  content: "\f11f"; 
+}
+.vjs-control-bar.top{
+    z-index: 110;
+}
+/*火狐下进度条调整*/
+._firefox .video-js .vjs-play-progress:before{
+    top: -.1em;
+}
+._firefox .vjs-progress-control.vjs-control:hover .vjs-play-progress:before{
+    top: -.2em;
+}
+/*火狐下音量条调整*/
+.vjs-slider-horizontal .vjs-volume-level:before{
+    top: -.33em;
+}
+._firefox .vjs-slider-horizontal .vjs-volume-level:before{
+    top: -.1em;
+}
+
+/*隐藏字幕按钮*/
+.vjs-control-bar > .vjs-subs-caps-button{
+    display: none;
+}
+
+/*按钮去除outline*/
+.video-js .vjs-button{
+    outline: 0;
+}
+/*播放按钮变圆*/
+.vjs-big-play-centered .vjs-big-play-button{
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    line-height: 1.9em;
+    margin-top: -1em;
+    margin-left: -1em;
+    z-index: 99;
+}
+
+/*弹层容器*/
+.video-box .video-info.on{
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+/*隐藏默认播放时间*/
+.vjs-control-bar .vjs-remaining-time.vjs-time-control .vjs-remaining-time-display{
+    /*font-size: 0;*/
+}
+
+#myVideo .vjs-poster{
+    background-size: cover !important;
+}
+
+/*按钮***************************************************/
+
+/*倍速*/
+.video-js .vjs-speed-control,.video-js .vjs-definition-control {
+    cursor: pointer;
+    -webkit-box-flex: none;
+    -moz-box-flex: none;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+}
+.video-js .vjs-speed-control .vjs-icon-placeholder,.video-js .vjs-definition-control .vjs-icon-placeholder, .video-js .vjs-theme-control .vjs-icon-placeholder, .video-js .vjs-playlist-control .vjs-icon-placeholder{
+    font-family:"iconfont" !important;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.video-js .vjs-speed-control.x1 .vjs-icon-placeholder:before{
+    content: "\e616";
+}
+.video-js .vjs-speed-control.x1_5 .vjs-icon-placeholder:before{
+    content: "\e620";
+}
+.video-js .vjs-speed-control.x2 .vjs-icon-placeholder:before{
+    content: "\e67d";
+}
+.speed-list .icon-beishu1, .speed-list .icon-beishu1_5{
+    position: relative;
+    left: -3px;
+}
+
+/*清晰度*/
+.video-js .vjs-definition-control.biaoqing .vjs-icon-placeholder:before{
+    content: "\e67c";
+}
+.video-js .vjs-definition-control.gaoqing .vjs-icon-placeholder:before{
+    content: "\e67f";
+}
+.video-js .vjs-definition-control.chaoqing .vjs-icon-placeholder:before{
+    content: "\e68c";
+}
+
+/*设置*/
+.video-js .vjs-setting-control .vjs-icon-placeholder{
+    font-family:"VideoJS";
+}
+.video-js .vjs-setting-control .vjs-icon-placeholder:before{
+    content: "\f110";
+}
+
+/*皮肤按钮*/
+.video-js .vjs-theme-control .vjs-icon-placeholder:before{
+    content: "\e716";
+}
+
+
+/*广告***************************************************/
+.video-box .video-info .video-info_advert{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(0,0,0,.8);
+    width: 60%;
+    font-size: 0;
+}
+.video-box .video-info .video-info_advert .close_advert{
+    position: absolute;
+    right: -8px;
+    top: -13px;
+    color: #7fbcd8;
+    font-size: 20px;
+}
+
+/*设置***************************************************/
+.video-box .video-info .video-info_setting{
+    display: none;
+    width: 60%;
+    height: 56%;
+    padding: 0 20px;
+    background: rgba(0,0,0,.85);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px #7fbcd8 solid;
+}
+.portrait .video-box .video-info .video-info_setting{
+    width: 100%;
+    height: 100%;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item{
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    display: table-cell;
+    vertical-align: middle;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_iconlist > li{
+    padding: 0 20px 5px;
+    display: inline-block;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_iconlist > li.on a{
+    color: #7fbcd8;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_iconlist > li a{
+    color: rgba(255,255,255,.8);
+    font-size: 28px;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .btn-close{
+    color: #fff !important;
+    font-size: 14px;
+    display: inline-block;
+    border: 1px #fff solid;
+    padding: 2px 24px;
+    margin-top: 5px;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_list{
+    margin: 10px 0 15px;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_list > li{
+    padding: 5px;
+    display: none;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_list > li.on{
+    display: block;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_list > li > span{
+    color: #ccc;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_list > li a{
+    color: #fff;
+    display: inline-block;
+    margin: 0 10px;
+    border-bottom: 2px rgba(0,0,0,0) solid;
+    padding: 0 2px 2px;
+}
+.video-box .video-info .video-info_setting .video-info_setting_item .video-info_setting_list > li a.on{
+    color: #7fbcd8;
+    font-weight: bold;
+    border-bottom: 2px #7fbcd8 solid;
+}
+
+
+/*选集列表***************************************************/
+.video-js .vjs-playlist-control .vjs-icon-placeholder:before{
+    content: "\e600";
+}
+.vjs-playlist-control{
+    position: absolute !important;
+    right: 0;
+    top: -140px;
+    z-index: 100;
+}
+.video-info_playlist{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 100;
+}
+.video-info_playlist_inner{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    transition: all .3s ease;
+    overflow-y: auto;
+    font-size: 13px;
+}
+
+@media only screen and (min-width: 960px) {
+    .video-info_playlist_inner{
+        width: 28%;
+        font-size: 14px;
+    }
+}
+@media only screen and (min-width: 640px) and (max-width: 960px) {
+    .video-info_playlist_inner{
+        width: 40%;
+        font-size: 13px;
+    }
+}
+
+.video-info_playlist .video-info_playlist_list{
+    background: #fff;
+    display: block;
+    margin-bottom: 5px;
+}
+.video-info_playlist .video-info_playlist_list .video-info_playlist_img{
+    width: 49%;
+    height: 0;
+    padding-bottom: 25%;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    float: left;
+}
+.video-info_playlist .video-info_playlist_list .video-info_playlist_tit{
+    float: left;
+    width: 51%;
+    padding: 5px;
+}
+
+.video-info_playlist .video-info_playlist_list.on{
+    background: #7fbcd8;
+}
+
+
+/*题目***************************************************/
+.video-info_subject{
+    position: absolute;
+    width: 50%;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    padding: 10px;
+    transform: translate(-50%,-50%);
+    background: rgba(0,0,0,.85);
+    font-size: 14px;
+    border: 2px #7fbcd8 solid;
+}
+.portrait .video-info_subject{
+    width: 80%;
+}
+.video-info_subject h4{
+    
+}
+.video-info_subject .video-info_subject_content{
+    text-align: center;
+    margin: 15px 0;
+}
+.landscape .video-info_subject .video-info_subject_content{
+    margin: 20px 0;
+}
+.video-info_subject > div > .video-info_subject_item{
+    display: inline-block;
+    width: auto;
+    text-align: left;
+}
+.video-info_subject > div > .video-info_subject_item input{
+    vertical-align: middle;
+}
+.video-info_subject > div > .video-info_subject_item > li{
+    padding: 2px 0;
+}
+.video-info_subject .video-info_subject_footer button{
+    padding: 5px 20px;
+    background: #7fbcd8;
+    color: #fff;
+    font-size: 12px;
+    width: 100%;
+    display: block;
+    border-color: transparent;
+}
+
+
+/*按钮展开*/
+.vjs-control{
+    position: relative;
+}
+.vjs-control-ul{
+    position: absolute;
+    left: 0;
+    bottom: 2.9em;
+    border-radius: 2px;
+    width: 100%;
+    overflow: hidden;
+    transition: .3s ease;
+    opacity: 0;
+    display: none;
+    height: 0;
+}
+.vjs-control-ul.on{
+    bottom: 3.1em;
+    opacity: 1;
+    height: auto;
+}
+.vjs-control-ul .vjs-control-li{
+    padding: 5px;
+    border-top: 1px #333 solid;
+    background: rgba(0,0,0,.8);
+}
+.vjs-control-ul .vjs-control-li .iconfont{
+    font-size: 18px;
+}
+.vjs-control-ul .vjs-control-li.on{
+    background: #7fbcd8;
+}
+.vjs-control-ul .vjs-control-li:hover{
+    background: #7fbcd8;
+}
+
+
+/*主题***************************************************/
+/*炫丽红*/
+.video-js.vjs-red-skin .vjs-control-bar{
+    background-color: rgba(255,0,87,.7);
+}
+.video-js.vjs-red-skin .vjs-slider{
+    background-color: rgba(255,152,187,0.8);
+}
+.video-js.vjs-red-skin .vjs-load-progress div{
+    background: rgba(255, 59, 126, 0.6);
+}
+.video-box .video-js.vjs-red-skin .video-info_setting .video-info_setting_item li a.on{
+    color: #e91e63;
+}
+.video-box .video-js.vjs-red-skin .video-info .video-info_advert .close_advert{
+    color: #e91e63;
+}
+.video-box .video-js.vjs-red-skin .video-info_playlist .video-info_playlist_list.on{
+    background: #e91e63;
+}
+.video-box .video-js.vjs-red-skin .video-info_subject .video-info_subject_footer button{
+    background: #e91e63;
+}
+.video-box .video-js.vjs-red-skin .video-info_subject{
+    border: 2px #e91e63 solid;
+}
+.video-box .video-js.vjs-red-skin .video-info .video-info_setting .video-info_setting_item .video-info_setting_iconlist > li.on a{
+    color: #e91e63;
+}
+.video-box .video-js.vjs-red-skin .video-info .video-info_setting .video-info_setting_item .video-info_setting_list > li a.on{
+    border-color: #e91e63;
+}
+.video-box .video-js.vjs-red-skin .video-info .video-info_setting{
+    border-color: #e91e63;
+}
+.video-box .video-js.vjs-red-skin .vjs-control-ul .vjs-control-li.on{
+    background: #e91e63;
+}
+.video-box .video-js.vjs-red-skin .vjs-control-ul .vjs-control-li:hover{
+    background: #e91e63;
+}
+
+/*活力黄*/
+.video-js.vjs-yellow-skin .vjs-control-bar{
+    background-color: rgba(255,193,9,.8);
+}
+.video-js.vjs-yellow-skin .vjs-slider{
+    background-color: rgba(255,233,166,0.8);
+}
+.video-js.vjs-yellow-skin .vjs-load-progress div{
+    background: rgba(208, 156, 0, 0.8);
+}
+.video-box .video-js.vjs-yellow-skin .video-info_setting .video-info_setting_item li a.on{
+    color: #ffc107;
+}
+.video-box .video-js.vjs-yellow-skin .video-info .video-info_advert .close_advert{
+    color: #ffc107;
+}
+.video-box .video-js.vjs-yellow-skin .video-info_playlist .video-info_playlist_list.on{
+    background: #ffc107;
+}
+.video-box .video-js.vjs-yellow-skin .video-info_subject .video-info_subject_footer button{
+    background: #ffc107;
+}
+.video-box .video-js.vjs-yellow-skin .video-info_subject{
+    border: 2px #ffc107 solid;
+}
+.video-box .video-js.vjs-yellow-skin .video-info .video-info_setting .video-info_setting_item .video-info_setting_iconlist > li.on a{
+    color: #ffc107;
+}
+.video-box .video-js.vjs-yellow-skin .video-info .video-info_setting .video-info_setting_item .video-info_setting_list > li a.on{
+    border-color: #ffc107;
+}
+.video-box .video-js.vjs-yellow-skin .video-info .video-info_setting{
+    border-color: #ffc107;
+}
+.video-box .video-js.vjs-yellow-skin .vjs-control-ul .vjs-control-li.on{
+    background: #ffc107;
+}
+.video-box .video-js.vjs-yellow-skin .vjs-control-ul .vjs-control-li:hover{
+    background: #ffc107;
+}
+
+/*-custom-fullscreen-*/
+.vjs-icon-fullscreen-enter, .video-js .vjs-custom-fullscreen-control .vjs-icon-placeholder {
+  font-family: VideoJS;
+  font-weight: normal;
+  font-style: normal; }
+.vjs-icon-fullscreen-enter:before, .video-js .vjs-custom-fullscreen-control .vjs-icon-placeholder:before {
+    content: "\f108"; 
+}
+.vjs-icon-fullscreen-exit, .video-js.vjs-fullscreen .vjs-custom-fullscreen-control .vjs-icon-placeholder {
+  font-family: VideoJS;
+  font-weight: normal;
+  font-style: normal; 
+}
+.vjs-icon-fullscreen-exit:before, .video-js.vjs-fullscreen .vjs-custom-fullscreen-control .vjs-icon-placeholder:before {
+    content: "\f109"; 
+}
+.video-js .vjs-custom-fullscreen-control {
+  cursor: pointer;
+  flex: none; 
+}
+.video-js .vjs-custom-fullscreen-control.enter .vjs-icon-placeholder:before {
+    content: "\f108"; 
+}
+.video-js .vjs-custom-fullscreen-control.exit .vjs-icon-placeholder:before {
+    content: "\f109"; 
+}
